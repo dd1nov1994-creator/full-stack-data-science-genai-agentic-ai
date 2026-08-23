@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Data Structures Course - Full Guide with Examples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        h4 {
+            color: #555;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 5px;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .example-box {
+            background: #e8f4f8;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .type-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .pros {
+            color: #27ae60;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        .cons {
+            color: #e74c3c;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #efefef;
+        }
+        
+        .use-case {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .application {
+            background: #cce5ff;
+            border-left: 4px solid #0066cc;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .advanced {
+            background: #e8e8e8;
+            border: 2px dashed #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .toc {
+            background: #f0f8ff;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        
+        .toc h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+        
+        .toc ol {
+            margin-left: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .difficulty.beginner {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .difficulty.intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .difficulty.advanced {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Complete Data Structures Course</h1>
+        <p class="subtitle">Comprehensive Learning Guide with Examples, Types, and Applications</p>
+        
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h3>📑 Course Outline</h3>
+            <ol>
+                <li>Introduction to Data Structures</li>
+                <li>Arrays & Lists</li>
+                <li>Linked Lists</li>
+                <li>Stacks</li>
+                <li>Queues</li>
+                <li>Hash Tables (Dictionaries)</li>
+                <li>Sets</li>
+                <li>Trees</li>
+                <li>Graphs</li>
+                <li>Heaps</li>
+                <li>Performance Comparison</li>
+                <li>Advanced Applications</li>
+            </ol>
+        </div>
+        
+        <!-- Module 1: Introduction -->
+        <div class="section">
+            <h2>1. Introduction to Data Structures <span class="difficulty beginner">Beginner</span></h2>
+            
+            <h3>What Are Data Structures?</h3>
+            <p>
+                A <strong>data structure</strong> is a specialized format for organizing, processing, retrieving, and storing data. 
+                It's a way to arrange data so that it can be accessed and modified efficiently. The choice of data structure can 
+                significantly impact the performance, scalability, and memory usage of your application.
+            </p>
+            
+            <h3>Why Are Data Structures Important?</h3>
+            <ul>
+                <li><strong>Efficiency:</strong> Proper data structures enable algorithms to run faster</li>
+                <li><strong>Memory Management:</strong> Optimal memory usage and allocation</li>
+                <li><strong>Problem Solving:</strong> Different problems require different data structures</li>
+                <li><strong>Code Quality:</strong> Well-organized data structures lead to cleaner code</li>
+                <li><strong>Scalability:</strong> Handle large datasets effectively</li>
+            </ul>
+            
+            <h3>Classification of Data Structures</h3>
+            <ul>
+                <li><strong>Primitive:</strong> int, float, char, boolean</li>
+                <li><strong>Linear:</strong> Array, List, Stack, Queue</li>
+                <li><strong>Non-Linear:</strong> Tree, Graph, Heap</li>
+            </ul>
+        </div>
+        
+        <!-- Module 2: Arrays & Lists -->
+        <div class="section">
+            <h2>2. Arrays & Lists <span class="difficulty beginner">Beginner</span></h2>
+            
+            <h3>Arrays</h3>
+            <p>
+                An array is a collection of elements of the same type stored in contiguous memory locations. 
+                Each element can be accessed by its index position.
+            </p>
+            
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li><span class="pros">✓</span> Fast access by index: O(1)</li>
+                <li><span class="pros">✓</span> Simple to understand and implement</li>
+                <li><span class="cons">✗</span> Fixed size in most languages</li>
+                <li><span class="cons">✗</span> Slow insertion/deletion: O(n)</li>
+                <li><span class="cons">✗</span> Must be contiguous in memory</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Basic Array Operations</strong>
+                <div class="code-block">
+# Python list (Dynamic Array)
+numbers = [10, 20, 30, 40, 50]
+
+# Access elements by index
+print(numbers[0])      # Output: 10
+print(numbers[-1])     # Output: 50 (Last element)
+
+# Modify element
+numbers[2] = 35        # Change 30 to 35
+
+# Add element
+numbers.append(60)     # O(1) amortized
+
+# Insert at position
+numbers.insert(1, 15)  # O(n) - shifts elements
+
+# Remove element
+numbers.pop()          # Remove last: O(1)
+numbers.pop(2)         # Remove at index: O(n)
+
+# Print all
+print(numbers)  # [10, 15, 20, 35, 40]
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: 2D Arrays (Matrix)</strong>
+                <div class="code-block">
+# 2D Array
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# Access element
+print(matrix[0][1])    # Output: 2
+
+# Iterate through matrix
+for row in matrix:
+    for element in row:
+        print(element, end=" ")
+# Output: 1 2 3 4 5 6 7 8 9
+
+# Transpose
+transpose = [[matrix[j][i] for j in range(len(matrix))] 
+             for i in range(len(matrix[0]))]
+                </div>
+            </div>
+            
+            <h3>Dynamic Arrays (Lists in Python)</h3>
+            <p>
+                A dynamic array can grow or shrink as needed. When capacity is exceeded, it allocates more memory 
+                and copies existing elements. This amortizes the insertion cost to O(1) on average.
+            </p>
+            
+            <div class="type-box">
+                <h4>Types of Arrays:</h4>
+                <ul>
+                    <li><strong>Static Arrays:</strong> Fixed size (C, C++)</li>
+                    <li><strong>Dynamic Arrays:</strong> Variable size (Python lists, Java ArrayList)</li>
+                    <li><strong>Single-dimensional:</strong> 1D array</li>
+                    <li><strong>Multi-dimensional:</strong> 2D, 3D arrays (matrices, cubes)</li>
+                    <li><strong>Jagged Arrays:</strong> Arrays with unequal row sizes</li>
+                </ul>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Image processing (pixel arrays)</li>
+                    <li>Database indexing</li>
+                    <li>Cache storage</li>
+                    <li>Sorting algorithms input</li>
+                    <li>Game boards and grids</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 3: Linked Lists -->
+        <div class="section">
+            <h2>3. Linked Lists <span class="difficulty beginner">Beginner</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A linked list is a linear data structure where elements (called nodes) are linked together using 
+                pointers or references. Each node contains data and a link to the next node.
+            </p>
+            
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li><span class="pros">✓</span> Dynamic size - grows as needed</li>
+                <li><span class="pros">✓</span> Efficient insertion/deletion if position known: O(1)</li>
+                <li><span class="cons">✗</span> Slow sequential access: O(n)</li>
+                <li><span class="cons">✗</span> Extra memory for pointers</li>
+                <li><span class="cons">✗</span> No random access by index</li>
+            </ul>
+            
+            <div class="type-box">
+                <h4>Types of Linked Lists:</h4>
+                <ul>
+                    <li><strong>Singly Linked List:</strong> Each node points to next node only</li>
+                    <li><strong>Doubly Linked List:</strong> Each node points to both next and previous</li>
+                    <li><strong>Circular Linked List:</strong> Last node points back to first</li>
+                    <li><strong>Circular Doubly Linked List:</strong> Combination of above two</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Singly Linked List</strong>
+                <div class="code-block">
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+    
+    # Insert at beginning
+    def insert_at_head(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+    
+    # Insert at end
+    def insert_at_end(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+    
+    # Traverse and print
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+    
+    # Delete node
+    def delete(self, data):
+        if not self.head:
+            return
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+        current = self.head
+        while current.next:
+            if current.next.data == data:
+                current.next = current.next.next
+                return
+            current = current.next
+
+# Usage
+ll = LinkedList()
+ll.insert_at_end(1)
+ll.insert_at_end(2)
+ll.insert_at_end(3)
+ll.insert_at_head(0)
+ll.display()  # Output: 0 -> 1 -> 2 -> 3 -> None
+ll.delete(2)
+ll.display()  # Output: 0 -> 1 -> 3 -> None
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Doubly Linked List</strong>
+                <div class="code-block">
+class DNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def insert_at_end(self, data):
+        new_node = DNode(data)
+        if not self.head:
+            self.head = new_node
+            return
+        current = self.head
+        while current.next:
+            current = current.next
+        current.next = new_node
+        new_node.prev = current
+    
+    def display_forward(self):
+        current = self.head
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.next
+        print("None")
+    
+    def display_backward(self):
+        current = self.head
+        while current.next:
+            current = current.next
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.prev
+        print("None")
+
+# Usage
+dll = DoublyLinkedList()
+dll.insert_at_end(1)
+dll.insert_at_end(2)
+dll.insert_at_end(3)
+dll.display_forward()   # 1 <-> 2 <-> 3 <-> None
+dll.display_backward()  # 3 <-> 2 <-> 1 <-> None
+                </div>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Browser history (back/forward navigation)</li>
+                    <li>Music playlists (previous/next songs)</li>
+                    <li>Undo/Redo functionality</li>
+                    <li>Memory management in OS</li>
+                    <li>Polynomial representation</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 4: Stacks -->
+        <div class="section">
+            <h2>4. Stacks <span class="difficulty beginner">Beginner</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A stack is a linear data structure that follows the <strong>LIFO (Last-In-First-Out)</strong> principle. 
+                The last element added is the first one to be removed. Think of a stack of plates—you add and remove from the top.
+            </p>
+            
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li><span class="pros">✓</span> O(1) push and pop operations</li>
+                <li><span class="pros">✓</span> Simple LIFO logic</li>
+                <li><span class="pros">✓</span> Space efficient</li>
+                <li><span class="cons">✗</span> Limited access (only top element)</li>
+                <li><span class="cons">✗</span> No random access</li>
+            </ul>
+            
+            <h3>Operations</h3>
+            <ul>
+                <li><strong>Push:</strong> Add element to top - O(1)</li>
+                <li><strong>Pop:</strong> Remove top element - O(1)</li>
+                <li><strong>Peek/Top:</strong> View top element - O(1)</li>
+                <li><strong>IsEmpty:</strong> Check if stack is empty - O(1)</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Stack Implementation</strong>
+                <div class="code-block">
+class Stack:
+    def __init__(self):
+        self.items = []
+    
+    def push(self, item):
+        """Add item to top"""
+        self.items.append(item)
+    
+    def pop(self):
+        """Remove and return top item"""
+        if not self.is_empty():
+            return self.items.pop()
+        return None
+    
+    def peek(self):
+        """View top item without removing"""
+        if not self.is_empty():
+            return self.items[-1]
+        return None
+    
+    def is_empty(self):
+        """Check if stack is empty"""
+        return len(self.items) == 0
+    
+    def size(self):
+        """Get stack size"""
+        return len(self.items)
+    
+    def display(self):
+        """Display stack"""
+        print("Stack (top to bottom):", self.items[::-1])
+
+# Usage
+stack = Stack()
+stack.push(10)
+stack.push(20)
+stack.push(30)
+stack.display()     # Stack (top to bottom): [30, 20, 10]
+print(stack.peek()) # 30
+print(stack.pop())  # 30 (removes it)
+print(stack.size()) # 2
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Check Balanced Parentheses</strong>
+                <div class="code-block">
+def is_balanced(expression):
+    """Check if parentheses are balanced using stack"""
+    stack = []
+    pairs = {'(': ')', '[': ']', '{': '}'}
+    
+    for char in expression:
+        if char in pairs:
+            stack.append(char)  # Push opening bracket
+        elif char in pairs.values():
+            if not stack:
+                return False
+            if pairs[stack.pop()] != char:
+                return False
+    
+    return len(stack) == 0
+
+# Test
+print(is_balanced("({[]})"))        # True
+print(is_balanced("({[}])"))        # False
+print(is_balanced("({[]})()"))      # True
+print(is_balanced("({[]}))("))      # False
+                </div>
+            </div>
+            
+            <div class="type-box">
+                <h4>Types of Stacks:</h4>
+                <ul>
+                    <li><strong>Array-based Stack:</strong> Uses array for storage</li>
+                    <li><strong>Linked List-based Stack:</strong> Uses linked list</li>
+                    <li><strong>Recursive Stack:</strong> Call stack in function calls</li>
+                    <li><strong>Double-ended Stack (Deque):</strong> Operations at both ends</li>
+                </ul>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Undo/Redo in text editors</li>
+                    <li>Browser back button history</li>
+                    <li>Function call stack</li>
+                    <li>Expression evaluation (postfix to infix)</li>
+                    <li>DFS (Depth-First Search) algorithm</li>
+                    <li>Backtracking in problems</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 5: Queues -->
+        <div class="section">
+            <h2>5. Queues <span class="difficulty beginner">Beginner</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A queue is a linear data structure that follows the <strong>FIFO (First-In-First-Out)</strong> principle. 
+                The first element added is the first one to be removed. Think of a line at a ticket counter.
+            </p>
+            
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li><span class="pros">✓</span> O(1) enqueue and dequeue</li>
+                <li><span class="pros">✓</span> Simple FIFO logic</li>
+                <li><span class="pros">✓</span> Fair ordering</li>
+                <li><span class="cons">✗</span> Limited access</li>
+                <li><span class="cons">✗</span> No random access</li>
+            </ul>
+            
+            <h3>Operations</h3>
+            <ul>
+                <li><strong>Enqueue:</strong> Add element to rear - O(1)</li>
+                <li><strong>Dequeue:</strong> Remove from front - O(1)</li>
+                <li><strong>Front:</strong> View front element - O(1)</li>
+                <li><strong>IsEmpty:</strong> Check if queue is empty - O(1)</li>
+            </ul>
+            
+            <div class="type-box">
+                <h4>Types of Queues:</h4>
+                <ul>
+                    <li><strong>Simple Queue:</strong> Standard FIFO queue</li>
+                    <li><strong>Circular Queue:</strong> Rear connects to front</li>
+                    <li><strong>Double-Ended Queue (Deque):</strong> Operations at both ends</li>
+                    <li><strong>Priority Queue:</strong> Elements processed by priority</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Simple Queue</strong>
+                <div class="code-block">
+from collections import deque
+
+# Using deque (efficient queue)
+queue = deque()
+
+# Enqueue (add to right)
+queue.append(1)
+queue.append(2)
+queue.append(3)
+queue.append(4)
+
+print("Queue:", list(queue))  # [1, 2, 3, 4]
+
+# Dequeue (remove from left)
+front = queue.popleft()
+print(f"Dequeued: {front}")   # 1
+print("Queue:", list(queue))  # [2, 3, 4]
+
+# Check front
+print(f"Front element: {queue[0]}")  # 2
+
+# Manual Queue Implementation
+class Queue:
+    def __init__(self):
+        self.items = []
+    
+    def enqueue(self, item):
+        self.items.append(item)
+    
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop(0)
+        return None
+    
+    def front(self):
+        if not self.is_empty():
+            return self.items[0]
+        return None
+    
+    def is_empty(self):
+        return len(self.items) == 0
+    
+    def display(self):
+        print("Queue (front to rear):", self.items)
+
+q = Queue()
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
+q.display()      # [10, 20, 30]
+q.dequeue()
+q.display()      # [20, 30]
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Priority Queue</strong>
+                <div class="code-block">
+import heapq
+
+class PriorityQueue:
+    def __init__(self):
+        self.items = []
+    
+    def enqueue(self, item, priority):
+        """Add item with priority (lower number = higher priority)"""
+        heapq.heappush(self.items, (priority, item))
+    
+    def dequeue(self):
+        """Remove and return highest priority item"""
+        if self.items:
+            return heapq.heappop(self.items)[1]
+        return None
+    
+    def display(self):
+        print("Queue:", self.items)
+
+pq = PriorityQueue()
+pq.enqueue("Task A", 3)
+pq.enqueue("Task B", 1)
+pq.enqueue("Task C", 2)
+pq.display()           # [(1, 'Task B'), (3, 'Task A'), (2, 'Task C')]
+print(pq.dequeue())    # Task B (priority 1)
+print(pq.dequeue())    # Task C (priority 2)
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 3: Circular Queue</strong>
+                <div class="code-block">
+class CircularQueue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+    
+    def enqueue(self, item):
+        if (self.rear + 1) % self.size == self.front:
+            print("Queue is full!")
+            return
+        if self.front == -1:
+            self.front = 0
+        self.rear = (self.rear + 1) % self.size
+        self.queue[self.rear] = item
+    
+    def dequeue(self):
+        if self.front == -1:
+            print("Queue is empty!")
+            return None
+        item = self.queue[self.front]
+        if self.front == self.rear:
+            self.front = self.rear = -1
+        else:
+            self.front = (self.front + 1) % self.size
+        return item
+    
+    def display(self):
+        if self.front == -1:
+            print("Queue is empty!")
+            return
+        print("Circular Queue:", end=" ")
+        i = self.front
+        while i != self.rear:
+            print(self.queue[i], end=" ")
+            i = (i + 1) % self.size
+        print(self.queue[self.rear])
+
+cq = CircularQueue(5)
+cq.enqueue(10)
+cq.enqueue(20)
+cq.enqueue(30)
+cq.display()       # 10 20 30
+print(cq.dequeue()) # 10
+cq.display()       # 20 30
+                </div>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Print job scheduling</li>
+                    <li>CPU task scheduling</li>
+                    <li>Breadth-First Search (BFS)</li>
+                    <li>Customer service queues</li>
+                    <li>Message passing systems</li>
+                    <li>Traffic light systems</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 6: Hash Tables -->
+        <div class="section">
+            <h2>6. Hash Tables (Dictionaries) <span class="difficulty intermediate">Intermediate</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A hash table is a data structure that maps keys to values using a hash function. It provides very fast 
+                average-case lookup, insertion, and deletion by computing an index into an array of buckets or slots.
+            </p>
+            
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li><span class="pros">✓</span> Average O(1) for search, insert, delete</li>
+                <li><span class="pros">✓</span> Efficient key-value mapping</li>
+                <li><span class="pros">✓</span> Flexible key and value types</li>
+                <li><span class="cons">✗</span> Unordered (in older Python versions)</li>
+                <li><span class="cons">✗</span> Can have hash collisions</li>
+                <li><span class="cons">✗</span> Worst case O(n) if many collisions</li>
+            </ul>
+            
+            <h3>Hash Function</h3>
+            <p>
+                A hash function converts a key into an array index. Good hash functions:
+            </p>
+            <ul>
+                <li>Distribute keys uniformly across array</li>
+                <li>Are deterministic (same input = same output)</li>
+                <li>Are fast to compute</li>
+                <li>Minimize collisions</li>
+            </ul>
+            
+            <div class="type-box">
+                <h4>Hash Table Types:</h4>
+                <ul>
+                    <li><strong>Direct Addressing:</strong> Key is index directly</li>
+                    <li><strong>Closed Hashing (Open Addressing):</strong> Collision resolved within table</li>
+                    <li><strong>Open Hashing (Chaining):</strong> Each slot contains linked list of items</li>
+                </ul>
+            </div>
+            
+            <div class="type-box">
+                <h4>Collision Resolution Methods:</h4>
+                <ul>
+                    <li><strong>Chaining:</strong> Store colliding items in linked list</li>
+                    <li><strong>Linear Probing:</strong> Find next empty slot</li>
+                    <li><strong>Quadratic Probing:</strong> Use quadratic formula to find slot</li>
+                    <li><strong>Double Hashing:</strong> Use second hash function</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Dictionary Operations (Python)</strong>
+                <div class="code-block">
+# Dictionary creation
+student = {
+    "name": "John",
+    "age": 20,
+    "grade": "A",
+    "courses": ["Math", "Physics"]
+}
+
+# Access values
+print(student["name"])        # John
+print(student.get("age"))     # 20
+print(student.get("email", "N/A"))  # N/A (default value)
+
+# Add/update
+student["email"] = "john@example.com"
+student["age"] = 21
+
+# Delete
+del student["grade"]
+# or
+student.pop("courses")
+
+# Check key existence
+if "name" in student:
+    print("Name exists")
+
+# Iterate
+for key, value in student.items():
+    print(f"{key}: {value}")
+
+# Dictionary methods
+print(student.keys())      # dict_keys([...])
+print(student.values())    # dict_values([...])
+print(len(student))        # 3
+student.clear()            # Remove all items
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Hash Table Implementation with Chaining</strong>
+                <div class="code-block">
+class HashTable:
+    def __init__(self, size=10):
+        self.size = size
+        self.table = [[] for _ in range(size)]  # Array of lists
+    
+    def hash_function(self, key):
+        """Simple hash function"""
+        return hash(key) % self.size
+    
+    def insert(self, key, value):
+        """Insert key-value pair"""
+        index = self.hash_function(key)
+        
+        # Check if key exists and update
+        for i, (k, v) in enumerate(self.table[index]):
+            if k == key:
+                self.table[index][i] = (key, value)
+                return
+        
+        # Add new pair
+        self.table[index].append((key, value))
+    
+    def search(self, key):
+        """Search for value by key"""
+        index = self.hash_function(key)
+        
+        for k, v in self.table[index]:
+            if k == key:
+                return v
+        return None
+    
+    def delete(self, key):
+        """Delete key-value pair"""
+        index = self.hash_function(key)
+        
+        for i, (k, v) in enumerate(self.table[index]):
+            if k == key:
+                self.table[index].pop(i)
+                return True
+        return False
+    
+    def display(self):
+        """Display hash table"""
+        for i, bucket in enumerate(self.table):
+            if bucket:
+                print(f"Index {i}: {bucket}")
+
+# Usage
+ht = HashTable(7)
+ht.insert("apple", 5)
+ht.insert("banana", 3)
+ht.insert("cherry", 8)
+ht.insert("date", 2)
+
+print(ht.search("apple"))   # 5
+ht.display()
+ht.delete("banana")
+print(ht.search("banana"))  # None
+                </div>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Database indexing</li>
+                    <li>Caching (CPU cache, web cache)</li>
+                    <li>Symbol table in compilers</li>
+                    <li>Spell checking</li>
+                    <li>Counting word frequency</li>
+                    <li>Finding duplicates</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 7: Sets -->
+        <div class="section">
+            <h2>7. Sets <span class="difficulty beginner">Beginner</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A set is an unordered collection of unique elements. It's based on hash table and provides fast 
+                membership testing and eliminates duplicate values.
+            </p>
+            
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li><span class="pros">✓</span> O(1) average membership testing</li>
+                <li><span class="pros">✓</span> No duplicates</li>
+                <li><span class="pros">✓</span> Supports mathematical set operations</li>
+                <li><span class="cons">✗</span> Unordered</li>
+                <li><span class="cons">✗</span> No indexing</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Set Operations</strong>
+                <div class="code-block">
+# Create sets
+set1 = {1, 2, 3, 4, 5}
+set2 = {4, 5, 6, 7, 8}
+set3 = set()  # Empty set
+
+# Add elements
+set3.add(10)
+set3.update([20, 30, 40])
+
+# Remove elements
+set3.remove(20)  # Raises KeyError if not found
+set3.discard(30)  # Doesn't raise error
+
+# Membership testing
+print(1 in set1)  # True
+
+# Union
+union = set1 | set2
+print(union)      # {1, 2, 3, 4, 5, 6, 7, 8}
+
+# Intersection
+intersection = set1 & set2
+print(intersection)  # {4, 5}
+
+# Difference
+difference = set1 - set2
+print(difference)    # {1, 2, 3}
+
+# Symmetric Difference
+sym_diff = set1 ^ set2
+print(sym_diff)      # {1, 2, 3, 6, 7, 8}
+
+# Subset/Superset
+print(set1.issubset(set2))      # False
+print({4, 5}.issubset(set1))    # True
+
+# Iterate
+for element in set1:
+    print(element, end=" ")
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Remove Duplicates</strong>
+                <div class="code-block">
+# Remove duplicates from list
+numbers = [1, 2, 2, 3, 3, 3, 4, 5, 5]
+unique = list(set(numbers))
+print(unique)  # [1, 2, 3, 4, 5]
+
+# Preserve order (Python 3.7+)
+unique_ordered = list(dict.fromkeys(numbers))
+print(unique_ordered)  # [1, 2, 3, 4, 5]
+
+# Count unique elements
+print(len(set(numbers)))  # 5
+                </div>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Removing duplicates</li>
+                    <li>Finding common elements</li>
+                    <li>Testing membership</li>
+                    <li>Database queries (UNION, INTERSECT)</li>
+                    <li>Spell checking unique words</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 8: Trees -->
+        <div class="section">
+            <h2>8. Trees <span class="difficulty intermediate">Intermediate</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A tree is a hierarchical data structure consisting of nodes connected by edges. It has a root node 
+                and each node can have multiple children. Trees are recursive by nature and are used extensively in 
+                databases, file systems, and algorithms.
+            </p>
+            
+            <h4>Key Terminology:</h4>
+            <ul>
+                <li><strong>Root:</strong> Top node with no parent</li>
+                <li><strong>Parent:</strong> Node with children</li>
+                <li><strong>Child:</strong> Node with a parent</li>
+                <li><strong>Leaf:</strong> Node with no children</li>
+                <li><strong>Height:</strong> Distance from node to farthest leaf</li>
+                <li><strong>Depth:</strong> Distance from root to node</li>
+            </ul>
+            
+            <div class="type-box">
+                <h4>Types of Trees:</h4>
+                <ul>
+                    <li><strong>Binary Tree:</strong> Each node has at most 2 children</li>
+                    <li><strong>Binary Search Tree:</strong> Left < parent < right</li>
+                    <li><strong>AVL Tree:</strong> Self-balancing BST</li>
+                    <li><strong>Red-Black Tree:</strong> Balanced with coloring</li>
+                    <li><strong>B-Tree:</strong> Multi-way search tree</li>
+                    <li><strong>Trie:</strong> Prefix tree for strings</li>
+                    <li><strong>Segment Tree:</strong> For range queries</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Binary Tree</strong>
+                <div class="code-block">
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+    
+    # Preorder: Root -> Left -> Right
+    def preorder(self, node):
+        if node:
+            print(node.value, end=" ")
+            self.preorder(node.left)
+            self.preorder(node.right)
+    
+    # Inorder: Left -> Root -> Right
+    def inorder(self, node):
+        if node:
+            self.inorder(node.left)
+            print(node.value, end=" ")
+            self.inorder(node.right)
+    
+    # Postorder: Left -> Right -> Root
+    def postorder(self, node):
+        if node:
+            self.postorder(node.left)
+            self.postorder(node.right)
+            print(node.value, end=" ")
+    
+    def level_order(self):
+        """BFS traversal"""
+        if not self.root:
+            return
+        queue = [self.root]
+        while queue:
+            node = queue.pop(0)
+            print(node.value, end=" ")
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+    
+    def height(self, node):
+        """Calculate tree height"""
+        if not node:
+            return -1
+        return 1 + max(self.height(node.left), self.height(node.right))
+
+# Build tree
+#        1
+#       / \
+#      2   3
+#     / \
+#    4   5
+
+tree = BinaryTree()
+tree.root = TreeNode(1)
+tree.root.left = TreeNode(2)
+tree.root.right = TreeNode(3)
+tree.root.left.left = TreeNode(4)
+tree.root.left.right = TreeNode(5)
+
+print("Preorder: ", end="")
+tree.preorder(tree.root)    # 1 2 4 5 3
+print("\nInorder: ", end="")
+tree.inorder(tree.root)     # 4 2 5 1 3
+print("\nPostorder: ", end="")
+tree.postorder(tree.root)   # 4 5 2 3 1
+print("\nLevel Order: ", end="")
+tree.level_order()          # 1 2 3 4 5
+print(f"\nHeight: {tree.height(tree.root)}")  # 2
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Binary Search Tree</strong>
+                <div class="code-block">
+class BST:
+    def __init__(self):
+        self.root = None
+    
+    def insert(self, value):
+        """Insert value maintaining BST property"""
+        if self.root is None:
+            self.root = TreeNode(value)
+        else:
+            self._insert_helper(self.root, value)
+    
+    def _insert_helper(self, node, value):
+        if value < node.value:
+            if node.left:
+                self._insert_helper(node.left, value)
+            else:
+                node.left = TreeNode(value)
+        else:
+            if node.right:
+                self._insert_helper(node.right, value)
+            else:
+                node.right = TreeNode(value)
+    
+    def search(self, value):
+        """Search for value in BST"""
+        return self._search_helper(self.root, value)
+    
+    def _search_helper(self, node, value):
+        if not node:
+            return False
+        if value == node.value:
+            return True
+        elif value < node.value:
+            return self._search_helper(node.left, value)
+        else:
+            return self._search_helper(node.right, value)
+    
+    def delete(self, value):
+        """Delete value from BST"""
+        self.root = self._delete_helper(self.root, value)
+    
+    def _delete_helper(self, node, value):
+        if not node:
+            return None
+        
+        if value < node.value:
+            node.left = self._delete_helper(node.left, value)
+        elif value > node.value:
+            node.right = self._delete_helper(node.right, value)
+        else:
+            # Node found
+            if not node.left:
+                return node.right
+            if not node.right:
+                return node.left
+            
+            # Node with two children
+            min_larger_node = self._find_min(node.right)
+            node.value = min_larger_node.value
+            node.right = self._delete_helper(node.right, min_larger_node.value)
+        
+        return node
+    
+    def _find_min(self, node):
+        current = node
+        while current.left:
+            current = current.left
+        return current
+
+# Usage
+bst = BST()
+values = [50, 30, 70, 20, 40, 60, 80]
+for val in values:
+    bst.insert(val)
+
+print(bst.search(40))  # True
+print(bst.search(100)) # False
+                </div>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>File systems (directory structure)</li>
+                    <li>Database indexing (B-trees)</li>
+                    <li>DOM structure in HTML</li>
+                    <li>Expression evaluation</li>
+                    <li>Syntax parsing in compilers</li>
+                    <li>Autocomplete (Trie)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 9: Graphs -->
+        <div class="section">
+            <h2>9. Graphs <span class="difficulty intermediate">Intermediate</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A graph is a collection of nodes (vertices) and edges connecting pairs of nodes. It's used to represent 
+                networks, social connections, maps, and many other real-world relationships.
+            </p>
+            
+            <h4>Key Terminology:</h4>
+            <ul>
+                <li><strong>Vertex/Node:</strong> A point in the graph</li>
+                <li><strong>Edge:</strong> Connection between two vertices</li>
+                <li><strong>Weight:</strong> Cost/distance associated with edge</li>
+                <li><strong>Degree:</strong> Number of edges connected to vertex</li>
+                <li><strong>Path:</strong> Sequence of vertices</li>
+                <li><strong>Cycle:</strong> Path that starts and ends at same vertex</li>
+            </ul>
+            
+            <div class="type-box">
+                <h4>Types of Graphs:</h4>
+                <ul>
+                    <li><strong>Directed Graph:</strong> Edges have direction (A → B)</li>
+                    <li><strong>Undirected Graph:</strong> Edges have no direction</li>
+                    <li><strong>Weighted Graph:</strong> Edges have weights/costs</li>
+                    <li><strong>Unweighted Graph:</strong> All edges equal weight</li>
+                    <li><strong>Cyclic Graph:</strong> Contains cycles</li>
+                    <li><strong>Acyclic Graph (DAG):</strong> No cycles</li>
+                </ul>
+            </div>
+            
+            <h3>Graph Representations</h3>
+            <ul>
+                <li><strong>Adjacency List:</strong> Space: O(V+E), Fast for sparse graphs</li>
+                <li><strong>Adjacency Matrix:</strong> Space: O(V²), Fast for dense graphs</li>
+                <li><strong>Edge List:</strong> Simple but slow lookup</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Graph Representation</strong>
+                <div class="code-block">
+# Adjacency List Representation
+graph_list = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D', 'E'],
+    'C': ['A', 'F'],
+    'D': ['B'],
+    'E': ['B', 'F'],
+    'F': ['C', 'E']
+}
+
+# Adjacency Matrix Representation
+# Vertices: A=0, B=1, C=2, D=3, E=4, F=5
+graph_matrix = [
+    [0, 1, 1, 0, 0, 0],  # A
+    [1, 0, 0, 1, 1, 0],  # B
+    [1, 0, 0, 0, 0, 1],  # C
+    [0, 1, 0, 0, 0, 0],  # D
+    [0, 1, 0, 0, 0, 1],  # E
+    [0, 0, 1, 0, 1, 0]   # F
+]
+
+# Weighted Graph
+weighted_graph = {
+    'A': [('B', 4), ('C', 2)],
+    'B': [('A', 4), ('D', 5), ('E', 10)],
+    'C': [('A', 2), ('F', 3)],
+    'D': [('B', 5)],
+    'E': [('B', 10), ('F', 1)],
+    'F': [('C', 3), ('E', 1)]
+}
+
+print("Adjacency List:", graph_list)
+print("Neighbors of B:", graph_list['B'])
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Graph Traversals</strong>
+                <div class="code-block">
+class Graph:
+    def __init__(self, vertices):
+        self.V = vertices
+        self.graph = {}
+        for i in range(vertices):
+            self.graph[i] = []
+    
+    def add_edge(self, u, v):
+        self.graph[u].append(v)
+    
+    def dfs(self, start):
+        """Depth-First Search using stack"""
+        visited = set()
+        stack = [start]
+        result = []
+        
+        while stack:
+            vertex = stack.pop()
+            if vertex not in visited:
+                visited.add(vertex)
+                result.append(vertex)
+                stack.extend(reversed(self.graph[vertex]))
+        
+        return result
+    
+    def bfs(self, start):
+        """Breadth-First Search using queue"""
+        visited = set([start])
+        queue = [start]
+        result = []
+        
+        while queue:
+            vertex = queue.pop(0)
+            result.append(vertex)
+            
+            for neighbor in self.graph[vertex]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+        
+        return result
+    
+    def dfs_recursive(self, vertex, visited, result):
+        """DFS using recursion"""
+        visited.add(vertex)
+        result.append(vertex)
+        
+        for neighbor in self.graph[vertex]:
+            if neighbor not in visited:
+                self.dfs_recursive(neighbor, visited, result)
+        
+        return result
+
+# Usage
+g = Graph(5)
+g.add_edge(0, 1)
+g.add_edge(0, 2)
+g.add_edge(1, 2)
+g.add_edge(1, 3)
+g.add_edge(2, 4)
+
+print("DFS:", g.dfs(0))           # [0, 2, 4, 1, 3]
+print("BFS:", g.bfs(0))           # [0, 1, 2, 3, 4]
+
+visited = set()
+print("DFS Recursive:", g.dfs_recursive(0, visited, []))  # [0, 1, 2, 4, 3]
+                </div>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Social networks (friend connections)</li>
+                    <li>GPS navigation (shortest path)</li>
+                    <li>Web page links (PageRank)</li>
+                    <li>Network routing protocols</li>
+                    <li>Game development (NPC pathfinding)</li>
+                    <li>Dependency graphs in software</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 10: Heaps -->
+        <div class="section">
+            <h2>10. Heaps <span class="difficulty intermediate">Intermediate</span></h2>
+            
+            <h3>Definition</h3>
+            <p>
+                A heap is a specialized tree-based data structure that satisfies the heap property. 
+                It's a complete binary tree that can be efficiently implemented using an array.
+            </p>
+            
+            <h4>Key Characteristics:</h4>
+            <ul>
+                <li><span class="pros">✓</span> O(log n) insertion and deletion</li>
+                <li><span class="pros">✓</span> O(1) access to min/max element</li>
+                <li><span class="pros">✓</span> Array-based, space efficient</li>
+                <li><span class="cons">✗</span> Not suitable for search</li>
+                <li><span class="cons">✗</span> Only min or max at top</li>
+            </ul>
+            
+            <div class="type-box">
+                <h4>Types of Heaps:</h4>
+                <ul>
+                    <li><strong>Min Heap:</strong> Parent ≤ Children (smallest at root)</li>
+                    <li><strong>Max Heap:</strong> Parent ≥ Children (largest at root)</li>
+                </ul>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 1: Min Heap Operations</strong>
+                <div class="code-block">
+import heapq
+
+# Min Heap using heapq (Python)
+min_heap = []
+
+# Add elements
+heapq.heappush(min_heap, 5)
+heapq.heappush(min_heap, 3)
+heapq.heappush(min_heap, 7)
+heapq.heappush(min_heap, 1)
+
+print("Min Heap:", min_heap)  # [1, 3, 7, 5]
+
+# Get minimum
+print(heapq.heappop(min_heap))  # 1
+print(heapq.heappop(min_heap))  # 3
+
+# Peek at minimum without removing
+print(min_heap[0])  # 5
+
+# Create heap from list
+numbers = [5, 3, 7, 1, 9, 2]
+heapq.heapify(numbers)
+print("Heapified:", numbers)  # [1, 3, 2, 5, 9, 7]
+
+# For max heap, negate values
+max_heap = []
+heapq.heappush(max_heap, -5)
+heapq.heappush(max_heap, -3)
+heapq.heappush(max_heap, -7)
+print("Max Heap:", [-x for x in max_heap])
+                </div>
+            </div>
+            
+            <div class="example-box">
+                <strong>📌 Example 2: Heap Sort</strong>
+                <div class="code-block">
+import heapq
+
+def heap_sort(arr):
+    """Sort array using heap"""
+    # Create min heap
+    heapq.heapify(arr)
+    
+    # Extract elements one by one
+    sorted_arr = []
+    while arr:
+        sorted_arr.append(heapq.heappop(arr))
+    
+    return sorted_arr
+
+# Usage
+numbers = [5, 3, 7, 1, 9, 2, 4]
+print("Original:", numbers)
+print("Sorted:", heap_sort(numbers.copy()))
+
+# Or using heapsort directly
+numbers2 = [5, 3, 7, 1, 9, 2, 4]
+sorted_nums = sorted(numbers2)  # Uses Timsort but can use heapq
+print("Sorted (built-in):", sorted_nums)
+                </div>
+            </div>
+            
+            <div class="application">
+                <strong>Real-World Applications:</strong>
+                <ul>
+                    <li>Priority queues (process scheduling)</li>
+                    <li>Dijkstra's algorithm (shortest path)</li>
+                    <li>Heap sort algorithm</li>
+                    <li>Median finding</li>
+                    <li>Load balancing</li>
+                    <li>Huffman coding</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Module 11: Performance Comparison -->
+        <div class="section">
+            <h2>11. Performance Comparison Chart <span class="difficulty intermediate">Intermediate</span></h2>
+            
+            <table class="comparison-table">
+                <tr>
+                    <th>Data Structure</th>
+                    <th>Access</th>
+                    <th>Insert</th>
+                    <th>Delete</th>
+                    <th>Search</th>
+                    <th>Space</th>
+                </tr>
+                <tr>
+                    <td><strong>Array</strong></td>
+                    <td>O(1)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Linked List</strong></td>
+                    <td>O(n)</td>
+                    <td>O(1)*</td>
+                    <td>O(1)*</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Stack</strong></td>
+                    <td>O(n)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Queue</strong></td>
+                    <td>O(n)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Hash Table</strong></td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td><strong>BST</strong></td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Heap</strong></td>
+                    <td>O(n)</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td><strong>Graph (Adjacency List)</strong></td>
+                    <td>O(V+E)</td>
+                    <td>O(1)</td>
+                    <td>O(V+E)</td>
+                    <td>O(V+E)</td>
+                    <td>O(V+E)</td>
+                </tr>
+                <tr>
+                    <td><strong>Trie</strong></td>
+                    <td>O(m)</td>
+                    <td>O(m)</td>
+                    <td>O(m)</td>
+                    <td>O(m)</td>
+                    <td>O(n)</td>
+                </tr>
+            </table>
+            <p style="font-size: 12px; font-style: italic;">* If position is known | m = length of key | V = vertices, E = edges</p>
+        </div>
+        
+        <!-- Module 12: Advanced Applications -->
+        <div class="section">
+            <h2>12. Advanced Applications <span class="difficulty advanced">Advanced</span></h2>
+            
+            <h3>Common Algorithms Using Data Structures</h3>
+            
+            <h4>Sorting Algorithms</h4>
+            <ul>
+                <li><strong>Merge Sort:</strong> Uses array/linked list - O(n log n)</li>
+                <li><strong>Quick Sort:</strong> Uses array/stack - O(n log n) avg</li>
+                <li><strong>Heap Sort:</strong> Uses heap - O(n log n)</li>
+                <li><strong>Radix Sort:</strong> Uses queue/bucket - O(nk)</li>
+            </ul>
+            
+            <h4>Search Algorithms</h4>
+            <ul>
+                <li><strong>Binary Search:</strong> Requires sorted array - O(log n)</li>
+                <li><strong>DFS:</strong> Uses stack/recursion - O(V+E)</li>
+                <li><strong>BFS:</strong> Uses queue - O(V+E)</li>
+                <li><strong>Hash-based Search:</strong> Hash table - O(1) avg</li>
+            </ul>
+            
+            <h4>Graph Algorithms</h4>
+            <ul>
+                <li><strong>Dijkstra:</strong> Shortest path - uses heap/priority queue</li>
+                <li><strong>Floyd-Warshall:</strong> All pairs shortest paths - uses matrix</li>
+                <li><strong>Prim/Kruskal:</strong> Minimum spanning tree - uses heap/disjoint set</li>
+                <li><strong>Topological Sort:</strong> DAG - uses stack/queue</li>
+            </ul>
+            
+            <div class="advanced">
+                <h4>📌 Example: LRU Cache (Using Doubly Linked List + Hash Table)</h4>
+                <div class="code-block">
+class LRUCache:
+    """Least Recently Used Cache"""
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.cache = {}  # key -> value
+        self.order = {}  # key -> DNode
+        self.head = None
+        self.tail = None
+    
+    class Node:
+        def __init__(self, key, value):
+            self.key = key
+            self.value = value
+            self.prev = None
+            self.next = None
+    
+    def get(self, key):
+        if key not in self.cache:
+            return -1
+        self._move_to_head(key)
+        return self.cache[key]
+    
+    def put(self, key, value):
+        if key in self.cache:
+            self.cache[key] = value
+            self._move_to_head(key)
+        else:
+            if len(self.cache) >= self.capacity:
+                # Remove least recently used
+                self._remove_tail()
+            
+            node = self.Node(key, value)
+            self.cache[key] = value
+            self.order[key] = node
+            self._add_to_head(node)
+    
+    def _move_to_head(self, key):
+        # Move node to head (most recently used)
+        node = self.order[key]
+        if node.prev:
+            node.prev.next = node.next
+        if node.next:
+            node.next.prev = node.prev
+        if node == self.tail:
+            self.tail = node.prev
+        
+        node.prev = None
+        node.next = self.head
+        if self.head:
+            self.head.prev = node
+        self.head = node
+        if not self.tail:
+            self.tail = node
+    
+    def _add_to_head(self, node):
+        node.prev = None
+        node.next = self.head
+        if self.head:
+            self.head.prev = node
+        self.head = node
+        if not self.tail:
+            self.tail = node
+    
+    def _remove_tail(self):
+        if not self.tail:
+            return
+        key = self.tail.key
+        if self.tail.prev:
+            self.tail.prev.next = None
+        self.tail = self.tail.prev
+        del self.cache[key]
+        del self.order[key]
+        if not self.tail:
+            self.head = None
+
+# Usage
+lru = LRUCache(3)
+lru.put(1, "a")
+lru.put(2, "b")
+lru.put(3, "c")
+print(lru.get(1))  # "a"
+lru.put(4, "d")  # Removes key 2
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tips Section -->
+        <div class="section">
+            <h2>💡 When to Use Which Data Structure</h2>
+            
+            <div class="use-case">
+                <h4>🔹 Need fast random access?</h4>
+                → Use <strong>Array</strong> - O(1) access by index
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 Frequent insertions/deletions at ends?</h4>
+                → Use <strong>Linked List</strong> or <strong>Deque</strong> - O(1) at ends
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 LIFO operations needed?</h4>
+                → Use <strong>Stack</strong> - function calls, undo, parentheses matching
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 FIFO operations needed?</h4>
+                → Use <strong>Queue</strong> - BFS, task scheduling, print jobs
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 Need key-value mapping with fast lookup?</h4>
+                → Use <strong>Hash Table</strong> - O(1) average search
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 Unique elements only?</h4>
+                → Use <strong>Set</strong> - eliminate duplicates, set operations
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 Need sorted data with frequent insertions/deletions?</h4>
+                → Use <strong>BST</strong> or <strong>Balanced BST</strong> - O(log n) operations
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 Need to find min/max frequently?</h4>
+                → Use <strong>Heap</strong> - O(log n) insert/delete, O(1) access min/max
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 Need to model relationships/connections?</h4>
+                → Use <strong>Graph</strong> - social networks, maps, dependencies
+            </div>
+            
+            <div class="use-case">
+                <h4>🔹 Need string prefix matching/autocomplete?</h4>
+                → Use <strong>Trie</strong> - O(m) search where m = string length
+            </div>
+        </div>
+        
+        <!-- Summary -->
+        <div class="section" style="background: #e8f5e9; border-left-color: #4caf50;">
+            <h2 style="color: #4caf50;">📊 Quick Reference Summary</h2>
+            
+            <h3>Linear Data Structures</h3>
+            <ul>
+                <li><strong>Array:</strong> Fixed/dynamic, fast access, slow insertion</li>
+                <li><strong>Linked List:</strong> Dynamic, fast insertion, slow access</li>
+                <li><strong>Stack:</strong> LIFO, O(1) push/pop</li>
+                <li><strong>Queue:</strong> FIFO, O(1) enqueue/dequeue</li>
+            </ul>
+            
+            <h3>Non-Linear Data Structures</h3>
+            <ul>
+                <li><strong>Tree:</strong> Hierarchical, fast search in BST, organizing data</li>
+                <li><strong>Graph:</strong> General structure, modeling relationships</li>
+                <li><strong>Heap:</strong> Priority-based, efficient min/max extraction</li>
+            </ul>
+            
+            <h3>Hash-based Data Structures</h3>
+            <ul>
+                <li><strong>Hash Table:</strong> Fast key-value lookup</li>
+                <li><strong>Set:</strong> Unique elements, set operations</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p><strong>Complete Data Structures Course - Full Learning Guide</strong></p>
+            <p>Created for beginners, intermediate, and advanced learners</p>
+            <p>Last updated: 2024 | Topics: 10+ Data Structures | Examples: 20+ Code Samples</p>
+        </footer>
+    </div>
+</body>
+</html>

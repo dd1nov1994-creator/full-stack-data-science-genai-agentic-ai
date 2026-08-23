@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures - Learning Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+        
+        .example-box {
+            background: #f0f4ff;
+            border: 1px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .pros {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .cons {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #667eea;
+            color: white;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Data Structures - Learning Guide</h1>
+        <p class="subtitle">A comprehensive introduction to fundamental data structures and their applications</p>
+        
+        <!-- Introduction Section -->
+        <div class="section">
+            <h2>What Are Data Structures?</h2>
+            <p>
+                A <strong>data structure</strong> is a specialized format for organizing, processing, retrieving and storing data. 
+                It's a way to arrange data so that it can be accessed and modified efficiently. The choice of data structure can 
+                significantly impact the performance of your application.
+            </p>
+            <p>
+                Data structures are fundamental to computer science and programming. They provide a means to manage large amounts 
+                of data efficiently, enabling algorithms to work with data in structured and predictable ways.
+            </p>
+        </div>
+        
+        <!-- Array Section -->
+        <div class="section">
+            <h2>1. Arrays</h2>
+            <p>
+                An array is a collection of elements, typically of the same type, stored in contiguous memory locations. 
+                Each element can be accessed by its index position.
+            </p>
+            
+            <h3>Characteristics:</h3>
+            <ul>
+                <li><span class="pros">✓</span> Fast access by index: O(1)</li>
+                <li><span class="pros">✓</span> Simple to understand and implement</li>
+                <li><span class="cons">✗</span> Fixed size (in most languages)</li>
+                <li><span class="cons">✗</span> Slow insertion/deletion: O(n)</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>Example in Python:</strong>
+                <div class="code-block">
+numbers = [10, 20, 30, 40, 50]
+print(numbers[0])      # Output: 10
+print(numbers[2])      # Output: 30
+numbers.append(60)     # Add element
+print(len(numbers))    # Output: 6
+                </div>
+            </div>
+        </div>
+        
+        <!-- Linked List Section -->
+        <div class="section">
+            <h2>2. Linked Lists</h2>
+            <p>
+                A linked list is a linear data structure where elements (called nodes) are linked together using pointers 
+                or references. Each node contains data and a link to the next node.
+            </p>
+            
+            <h3>Characteristics:</h3>
+            <ul>
+                <li><span class="pros">✓</span> Dynamic size</li>
+                <li><span class="pros">✓</span> Efficient insertion/deletion: O(1) if position known</li>
+                <li><span class="cons">✗</span> Slow access: O(n)</li>
+                <li><span class="cons">✗</span> Extra memory for pointers</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>Example in Python:</strong>
+                <div class="code-block">
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+# Create linked list: 1 -> 2 -> 3
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+
+# Traverse
+current = head
+while current:
+    print(current.data, end=" -> ")
+    current = current.next
+# Output: 1 -> 2 -> 3 ->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stack Section -->
+        <div class="section">
+            <h2>3. Stacks</h2>
+            <p>
+                A stack is a linear data structure that follows the <strong>Last-In-First-Out (LIFO)</strong> principle. 
+                The last element added is the first one to be removed.
+            </p>
+            
+            <h3>Characteristics:</h3>
+            <ul>
+                <li><span class="pros">✓</span> Simple LIFO operations</li>
+                <li><span class="pros">✓</span> O(1) push and pop operations</li>
+                <li>Used in function calls, undo functionality, expression evaluation</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>Example in Python:</strong>
+                <div class="code-block">
+# Using a list as stack
+stack = []
+stack.append(1)        # Push
+stack.append(2)        # Push
+stack.append(3)        # Push
+print(stack.pop())     # Output: 3 (LIFO)
+print(stack.pop())     # Output: 2
+print(len(stack))      # Output: 1
+                </div>
+            </div>
+        </div>
+        
+        <!-- Queue Section -->
+        <div class="section">
+            <h2>4. Queues</h2>
+            <p>
+                A queue is a linear data structure that follows the <strong>First-In-First-Out (FIFO)</strong> principle. 
+                The first element added is the first one to be removed.
+            </p>
+            
+            <h3>Characteristics:</h3>
+            <ul>
+                <li><span class="pros">✓</span> Simple FIFO operations</li>
+                <li><span class="pros">✓</span> O(1) enqueue and dequeue</li>
+                <li>Used in print queues, task scheduling, breadth-first search</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>Example in Python:</strong>
+                <div class="code-block">
+from collections import deque
+
+queue = deque()
+queue.append(1)        # Enqueue
+queue.append(2)        # Enqueue
+queue.append(3)        # Enqueue
+print(queue.popleft()) # Output: 1 (FIFO)
+print(queue.popleft()) # Output: 2
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tree Section -->
+        <div class="section">
+            <h2>5. Trees</h2>
+            <p>
+                A tree is a hierarchical data structure consisting of nodes connected by edges. It has a root node and 
+                each node can have multiple children. Trees are used extensively in databases, file systems, and algorithms.
+            </p>
+            
+            <h3>Common Types:</h3>
+            <ul>
+                <li><strong>Binary Tree:</strong> Each node has at most 2 children</li>
+                <li><strong>Binary Search Tree:</strong> Left child < parent < right child</li>
+                <li><strong>Balanced Tree:</strong> Height difference is minimized</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>Example in Python:</strong>
+                <div class="code-block">
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+# Create binary tree
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+
+# Tree structure:
+#        1
+#       / \
+#      2   3
+#     /
+#    4
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hash Table Section -->
+        <div class="section">
+            <h2>6. Hash Tables (Dictionaries)</h2>
+            <p>
+                A hash table is a data structure that maps keys to values using a hash function. It provides very fast 
+                average-case lookup, insertion, and deletion.
+            </p>
+            
+            <h3>Characteristics:</h3>
+            <ul>
+                <li><span class="pros">✓</span> Average O(1) for search, insert, delete</li>
+                <li><span class="pros">✓</span> Efficient key-value mapping</li>
+                <li><span class="cons">✗</span> Unordered</li>
+                <li><span class="cons">✗</span> Can have collisions</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>Example in Python:</strong>
+                <div class="code-block">
+# Dictionary (Hash Table)
+student = {
+    "name": "John",
+    "age": 20,
+    "grade": "A"
+}
+
+print(student["name"])      # Output: John
+student["age"] = 21         # Update
+student["email"] = "john@example.com"  # Add
+del student["grade"]        # Delete
+                </div>
+            </div>
+        </div>
+        
+        <!-- Graph Section -->
+        <div class="section">
+            <h2>7. Graphs</h2>
+            <p>
+                A graph is a collection of nodes (vertices) and edges connecting pairs of nodes. It's used to represent 
+                networks, social connections, maps, and many other real-world relationships.
+            </p>
+            
+            <h3>Types:</h3>
+            <ul>
+                <li><strong>Directed Graph:</strong> Edges have a direction</li>
+                <li><strong>Undirected Graph:</strong> Edges have no direction</li>
+                <li><strong>Weighted Graph:</strong> Edges have weights/costs</li>
+            </ul>
+            
+            <div class="example-box">
+                <strong>Example in Python:</strong>
+                <div class="code-block">
+# Graph using adjacency list
+graph = {
+    'A': ['B', 'C'],
+    'B': ['A', 'D'],
+    'C': ['A', 'D'],
+    'D': ['B', 'C']
+}
+
+# Traverse neighbors of A
+print(graph['A'])  # Output: ['B', 'C']
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comparison Table -->
+        <div class="section">
+            <h2>Comparison of Data Structures</h2>
+            <table class="comparison-table">
+                <tr>
+                    <th>Data Structure</th>
+                    <th>Access</th>
+                    <th>Insert</th>
+                    <th>Delete</th>
+                    <th>Search</th>
+                </tr>
+                <tr>
+                    <td>Array</td>
+                    <td>O(1)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Linked List</td>
+                    <td>O(n)</td>
+                    <td>O(1)*</td>
+                    <td>O(1)*</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Stack</td>
+                    <td>O(n)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Queue</td>
+                    <td>O(n)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(n)</td>
+                </tr>
+                <tr>
+                    <td>Binary Search Tree</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                    <td>O(log n)</td>
+                </tr>
+                <tr>
+                    <td>Hash Table</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                    <td>O(1)</td>
+                </tr>
+            </table>
+            <p style="font-size: 12px; font-style: italic;">* If position is known</p>
+        </div>
+        
+        <!-- Tips Section -->
+        <div class="section">
+            <h2>💡 Tips for Choosing Data Structures</h2>
+            <ul>
+                <li><strong>Need fast access by position?</strong> → Use Array</li>
+                <li><strong>Frequent insertions/deletions?</strong> → Use Linked List</li>
+                <li><strong>LIFO operations?</strong> → Use Stack</li>
+                <li><strong>FIFO operations?</strong> → Use Queue</li>
+                <li><strong>Key-value mapping?</strong> → Use Hash Table</li>
+                <li><strong>Hierarchical data?</strong> → Use Tree</li>
+                <li><strong>Network relationships?</strong> → Use Graph</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Data Structures Learning Guide - Educational Resource</p>
+            <p>Last updated: 2024 | Created for beginners and intermediate learners</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -19,13 +19,11 @@ Learning materials and practice files for Python, data structures, data science,
    ```powershell
    python -m pip install jupyter
    ```
-
 3. Start Jupyter from the project folder:
 
    ```powershell
    jupyter notebook
    ```
-
 4. Open a notebook from `01_Python/` and run the cells.
 
 The HTML files can be opened directly in a web browser.

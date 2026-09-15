@@ -1,0 +1,494 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.46 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select 10+ 20;
++--------+
+| 10+ 20 |
++--------+
+|     30 |
++--------+
+1 row in set (0.01 sec)
+
+mysql>  select 10 * 20;
++---------+
+| 10 * 20 |
++---------+
+|     200 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select 10 / 5;
++--------+
+| 10 / 5 |
++--------+
+| 2.0000 |
++--------+
+1 row in set (0.01 sec)
+
+mysql> select 12 %  5;
++---------+
+| 12 %  5 |
++---------+
+|       2 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> create table customers ( id int, name varchar(30), age int, address varchar(30), salary int, primary key id);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> show dtabase;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dtabase' at line 1
+mysql> show dtabases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dtabases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| nit                |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> use nit;
+Database changed
+mysql>  create table customers ( id int, name varchar(30), age int, address varchar(30), salary int, primary key (id) );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_nit |
++---------------+
+| customers     |
+| emp           |
+| student       |
++---------------+
+3 rows in set (0.01 sec)
+
+mysql> select * from customers;
+Empty set (0.00 sec)
+
+mysql> insert into customers ( id, name, age, address, salary) values (29,'naval',38,'canada',39000), (19,'vijay',21, 'chennai',29000), (89, 'sherry',23,'usa',45900);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from customers;
++----+--------+------+---------+--------+
+| id | name   | age  | address | salary |
++----+--------+------+---------+--------+
+| 19 | vijay  |   21 | chennai |  29000 |
+| 29 | naval  |   38 | canada  |  39000 |
+| 89 | sherry |   23 | usa     |  45900 |
++----+--------+------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customers where salary > 5000;
++----+--------+------+---------+--------+
+| id | name   | age  | address | salary |
++----+--------+------+---------+--------+
+| 19 | vijay  |   21 | chennai |  29000 |
+| 29 | naval  |   38 | canada  |  39000 |
+| 89 | sherry |   23 | usa     |  45900 |
++----+--------+------+---------+--------+
+3 rows in set (0.01 sec)
+
+mysql> select * from customers where salary > 40000;
++----+--------+------+---------+--------+
+| id | name   | age  | address | salary |
++----+--------+------+---------+--------+
+| 89 | sherry |   23 | usa     |  45900 |
++----+--------+------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from customers where age >= 25 and salary >= 10000;
++----+-------+------+---------+--------+
+| id | name  | age  | address | salary |
++----+-------+------+---------+--------+
+| 29 | naval |   38 | canada  |  39000 |
++----+-------+------+---------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from customers where age >= 25 or salary >= 10000;
++----+--------+------+---------+--------+
+| id | name   | age  | address | salary |
++----+--------+------+---------+--------+
+| 19 | vijay  |   21 | chennai |  29000 |
+| 29 | naval  |   38 | canada  |  39000 |
+| 89 | sherry |   23 | usa     |  45900 |
++----+--------+------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customers where age is not null;
++----+--------+------+---------+--------+
+| id | name   | age  | address | salary |
++----+--------+------+---------+--------+
+| 19 | vijay  |   21 | chennai |  29000 |
+| 29 | naval  |   38 | canada  |  39000 |
+| 89 | sherry |   23 | usa     |  45900 |
++----+--------+------+---------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from customers where salary = 30000;
+Empty set (0.00 sec)
+
+mysql>  select numerical_expression as operation_name
+    -> [from table customer where age > 21];
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[from table customer where age > 21]' at line 2
+mysql> select current_timestamp;
++---------------------+
+| current_timestamp   |
++---------------------+
+| 2026-09-15 09:57:39 |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select count(*) as "records" from customers;
++---------+
+| records |
++---------+
+|       3 |
++---------+
+1 row in set (0.01 sec)
+
+mysql> select getdate();
+ERROR 1305 (42000): FUNCTION nit.getdate does not exist
+mysql> create database testdb;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |cd C:\Users\Admin\source
+git add sql_practiceset.sql
+git commit -m "Fix SQL practice script"
+git push
+| nit                |
+| performance_schema |
+| sys                |
+| testdb             |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> ^C
+mysql>  drop database testdb;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| nit                |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> create database personal;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use personal;
+Database changed
+mysql> create table books;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table books ( name char (30) primary key, price int not null, type varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>  insert into books ( name, price, type) values ( '48 laws of power', 399, 'motivational'), ('think strainght', 299, 'selfhelp'), ('almanack', 399,'selfhelp');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> insert into books ( name, price, type) values ( '48 laws of power', 399, 'motivational'), ('think strainght', 299, 'selfhelp'), ('almanack', 399,'selfhelp');
+ERROR 1062 (23000): Duplicate entry '48 laws of power' for key 'books.PRIMARY'
+mysql> select price from books;
++-------+
+| price |
++-------+
+|   399 |
+|   399 |
+|   299 |
++-------+
+3 rows in set (0.00 sec)
+
+mysql> select name , price from books;
++------------------+-------+
+| name             | price |
++------------------+-------+
+| 48 laws of power |   399 |
+| almanack         |   399 |
+| think strainght  |   299 |
++------------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select name from books where price > 199;
++------------------+
+| name             |
++------------------+
+| 48 laws of power |
+| almanack         |
+| think strainght  |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql>  select name from books where price > 299;
++------------------+
+| name             |
++------------------+
+| 48 laws of power |
+| almanack         |
++------------------+
+2 rows in set (0.00 sec)
+
+mysql> update books set price = 199 where name = 'almanack';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from books
+    -> elect * from books;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from books' at line 2
+mysql> select * from books;
++------------------+-------+--------------+
+| name             | price | type         |
++------------------+-------+--------------+
+| 48 laws of power |   399 | motivational |
+| almanack         |   199 | selfhelp     |
+| think strainght  |   299 | selfhelp     |
++------------------+-------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select name from books order by price;
++------------------+
+| name             |
++------------------+
+| almanack         |
+| think strainght  |
+| 48 laws of power |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql> select name from books order by price desc;
++------------------+
+| name             |
++------------------+
+| 48 laws of power |
+| think strainght  |
+| almanack         |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql> select name from books
+    -> ;
++------------------+
+| name             |
++------------------+
+| 48 laws of power |
+| almanack         |
+| think strainght  |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from books;
++------------------+-------+--------------+
+| name             | price | type         |
++------------------+-------+--------------+
+| 48 laws of power |   399 | motivational |
+| almanack         |   199 | selfhelp     |
+| think strainght  |   299 | selfhelp     |
++------------------+-------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> select name from books by alphabetic desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by alphabetic desc' at line 1
+mysql> select name from books by desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by desc' at line 1
+mysql> select name from books by name desc;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'by name desc' at line 1
+mysql>  select name from books order by price desc;
++------------------+
+| name             |
++------------------+
+| 48 laws of power |
+| think strainght  |
+| almanack         |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql>  select name from books order by name desc;
++------------------+
+| name             |
++------------------+
+| think strainght  |
+| almanack         |
+| 48 laws of power |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql>  select name from books order by name asc;
++------------------+
+| name             |
++------------------+
+| 48 laws of power |
+| almanack         |
+| think strainght  |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql>  select name from books where price is top;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'top' at line 1
+mysql>  select name from books max price;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'price' at line 1
+mysql>  select name from books max_price;
++------------------+
+| name             |
++------------------+
+| 48 laws of power |
+| almanack         |
+| think strainght  |
++------------------+
+3 rows in set (0.00 sec)
+
+mysql>  select * from books order by price desc;
++------------------+-------+--------------+
+| name             | price | type         |
++------------------+-------+--------------+
+| 48 laws of power |   399 | motivational |
+| think strainght  |   299 | selfhelp     |
+| almanack         |   199 | selfhelp     |
++------------------+-------+--------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into books ( name, price, type) values ( 'laws of power', 99, 'motivational'), ('sink strainght', 29, 'selfhelp'), ('manack', 199,'selfhelp');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql>  select * from books order by price desc;
++------------------+-------+--------------+
+| name             | price | type         |
++------------------+-------+--------------+
+| 48 laws of power |   399 | motivational |
+| think strainght  |   299 | selfhelp     |
+| almanack         |   199 | selfhelp     |
+| manack           |   199 | selfhelp     |
+| laws of power    |    99 | motivational |
+| sink strainght   |    29 | selfhelp     |
++------------------+-------+--------------+
+6 rows in set (0.00 sec)
+
+mysql>  select * from books;
++------------------+-------+--------------+
+| name             | price | type         |
++------------------+-------+--------------+
+| 48 laws of power |   399 | motivational |
+| almanack         |   199 | selfhelp     |
+| laws of power    |    99 | motivational |
+| manack           |   199 | selfhelp     |
+| sink strainght   |    29 | selfhelp     |
+| think strainght  |   299 | selfhelp     |
++------------------+-------+--------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into books ( name, price, type) values ( 'power', 959, 'motivational');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into books ( name, price, type) values ( 'ai power', 559, 'motivational');
+Query OK, 1 row affected (0.01 sec)
+
+mysql>  select * from books;
++------------------+-------+--------------+
+| name             | price | type         |
++------------------+-------+--------------+
+| 48 laws of power |   399 | motivational |
+| ai power         |   559 | motivational |
+| almanack         |   199 | selfhelp     |
+| laws of power    |    99 | motivational |
+| manack           |   199 | selfhelp     |
+| power            |   959 | motivational |
+| sink strainght   |    29 | selfhelp     |
+| think strainght  |   299 | selfhelp     |
++------------------+-------+--------------+
+8 rows in set (0.00 sec)
+
+mysql>  select * from books order by price desc;
++------------------+-------+--------------+
+| name             | price | type         |
++------------------+-------+--------------+
+| power            |   959 | motivational |
+| ai power         |   559 | motivational |
+| 48 laws of power |   399 | motivational |
+| think strainght  |   299 | selfhelp     |
+| almanack         |   199 | selfhelp     |
+| manack           |   199 | selfhelp     |
+| laws of power    |    99 | motivational |
+| sink strainght   |    29 | selfhelp     |
++------------------+-------+--------------+
+8 rows in set (0.00 sec)
+
+mysql>  select count(*) from books;
++----------+
+| count(*) |
++----------+
+|        8 |
++----------+
+1 row in set (0.00 sec)
+
+mysql>  select top(1) from books;
+ERROR 1305 (42000): FUNCTION personal.top does not exist
+mysql>  select top_1 from books;
+ERROR 1054 (42S22): Unknown column 'top_1' in 'field list'
+mysql>  select top 1 from books;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1 from books' at line 1
+mysql>  select top1 from books;
+ERROR 1054 (42S22): Unknown column 'top1' in 'field list'
+mysql>  select max1 from books;
+ERROR 1054 (42S22): Unknown column 'max1' in 'field list'
+mysql>  select max(price) from books;
++------------+
+| max(price) |
++------------+
+|        959 |
++------------+
+1 row in set (0.00 sec)
+
+mysql>  select max(value) from books;
+ERROR 1054 (42S22): Unknown column 'value' in 'field list'
+mysql>  select min(price) from books;
++------------+
+| min(price) |
++------------+
+|         29 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from books where price=(select max(price) from books);
++-------+-------+--------------+
+| name  | price | type         |
++-------+-------+--------------+
+| power |   959 | motivational |
++-------+-------+--------------+
+1 row in set (0.01 sec)
+
+mysql> select * from books where price=(select min(price) from books);
++----------------+-------+----------+
+| name           | price | type     |
++----------------+-------+----------+
+| sink strainght |    29 | selfhelp |
++----------------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> select * from books where price=(select top(price) from books);
+ERROR 1305 (42000): FUNCTION personal.top does not exist
+mysql> ^Aselect * from books
